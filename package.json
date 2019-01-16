@@ -1,0 +1,21 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "for practice of patterns(diamond)",
+  "main": "index.js",
+  "scripts": {
+    "pattern:diamond": "nodemon extra/pattern/diamond.js",
+    "pattern:Equilateral_triangle": "nodemon extra/pattern/Equilateral.triangle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STRohan/express-server.git"
+  },
+  "author": "Rohan Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STRohan/express-server/issues"
+  },
+  "homepage": "https://github.com/STRohan/express-server#readme"
+}
