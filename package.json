@@ -4,12 +4,8 @@
   "description": "for practice of patterns(diamond)",
   "main": "index.js",
   "scripts": {
-    "pattern:diamond": "nodemon extra/pattern/diamond.js",
-    "pattern:Equilateral_triangle": "nodemon extra/pattern/Equilateral.triangle.js",
-    "utils:permissions": "nodemon extra/utils/permissions.js",
-    "utils:validation": "nodemon extra/utils/validation.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "dev" : "babel-node extra --presets env"
+      },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/STRohan/express-server.git"
@@ -19,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/STRohan/express-server/issues"
   },
-  "homepage": "https://github.com/STRohan/express-server#readme"
+  "homepage": "https://github.com/STRohan/express-server#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
 }

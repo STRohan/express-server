@@ -1,4 +1,4 @@
-function Equilateral_triangle(n)
+export default function Equilateral_triangle(n)
 {
     let pattern='';
     for(let i=1;i<=n;i++)
@@ -18,4 +18,3 @@ function Equilateral_triangle(n)
 
 }
 
-Equilateral_triangle(10);
