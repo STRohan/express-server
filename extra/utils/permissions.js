@@ -1,13 +1,22 @@
+const getUsers = "getUsers",
+  headTrainer = "head-trainer",
+  trainee = "trainee",
+  trainer = "trainer";
 const permissions = {
   getUsers: {
-    all: ["head-trainer"],
-    read: ["trainee", "trainer"],
-    write: ["trainer"],
+    all: [headTrainer],
+    read: [trainee, trainer],
+    write: [trainer],
     delete: []
   }
 };
 
 function hasPermission(moduleName, role, permissionType) {
-  console.log(permissions[moduleName][permissionType].includes(role));
+  if (
+    permissions[moduleName]['all'].includes(role) ||
+    permissions[moduleName][permissionType].includes(role)
+  )
+    return "True";
+  else return "False";
 }
-hasPermission("getUsers", "head-trainer", "delete");
+console.log(hasPermission("getUsers", "head-trainer", "delete"));
