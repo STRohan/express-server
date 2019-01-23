@@ -1,10 +1,11 @@
 import { config } from "dotenv";
 import * as express from "express";
 import { configuration } from "./config/configuration";
+import { IConfig } from "./config/IConfig";
 
 class Server {
   private app: express.Express;
-  constructor(public config) {
+  constructor(public config: IConfig) {
     this.app = express();
   }
 
