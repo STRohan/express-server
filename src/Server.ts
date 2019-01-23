@@ -1,7 +1,9 @@
+import * as bodyParser from "express";
 import { config } from "dotenv";
 import * as express from "express";
 import { configuration } from "./config/configuration";
 import { IConfig } from "./config/IConfig";
+import { notFoundRoute, errorHandler } from "./libs/routes";
 
 class Server {
   private app: express.Express;
@@ -9,7 +11,16 @@ class Server {
     this.app = express();
   }
 
+  private initBodyParser() {
+    const { app } = this;
+    app.use(bodyParser.urlencoded({ extended: false }));
+
+    app.use(bodyParser.json());
+    return this;
+  }
+
   public bootstrap() {
+    this.initBodyParser();
     this.setupRoutes();
 
     return this;
@@ -23,6 +34,9 @@ class Server {
     this.app.use("/health-check", (req, res) => {
       res.send(" I am Ok ");
     });
+
+    app.use(notFoundRoute);
+    app.use(errorHandler);
   }
 
   public run() {
@@ -30,7 +44,7 @@ class Server {
       app,
       config: { Port }
     } = this;
-    this.app.listen(Port, err => {
+    this.app.listen(Port, (err: string) => {
       if (err) {
         throw err;
       }
