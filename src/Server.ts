@@ -1,12 +1,11 @@
-import { config } from 'dotenv';
+import { config } from "dotenv";
 import * as express from "express";
-import { configuration } from './config/configuration';
+import { configuration } from "./config/configuration";
 
 class Server {
   private app: express.Express;
   constructor(public config) {
     this.app = express();
-
   }
 
   public bootstrap() {
@@ -16,23 +15,26 @@ class Server {
   }
 
   public setupRoutes() {
-
-    const {app,config:{ Port } }= this;
+    const {
+      app,
+      config: { Port }
+    } = this;
     this.app.use("/health-check", (req, res) => {
       res.send(" I am Ok ");
     });
   }
 
   public run() {
-    const { app, config: {Port }} = this;
-    this.app.listen (Port, (err) => {
-
-      if (err){
-      throw err;
+    const {
+      app,
+      config: { Port }
+    } = this;
+    this.app.listen(Port, err => {
+      if (err) {
+        throw err;
       }
     });
     console.log("The app is running");
-
   }
 }
 export { Server };
