@@ -4,6 +4,7 @@ import * as express from "express";
 import { configuration } from "./config/configuration";
 import { IConfig } from "./config/IConfig";
 import { notFoundRoute, errorHandler } from "./libs/routes";
+import { router } from "./router";
 
 class Server {
   private app: express.Express;
@@ -34,6 +35,8 @@ class Server {
     this.app.use("/health-check", (req, res) => {
       res.send(" I am Ok ");
     });
+
+    app.use("/api", router);
 
     app.use(notFoundRoute);
     app.use(errorHandler);
