@@ -28,10 +28,7 @@ class Server {
   }
 
   public setupRoutes() {
-    const {
-      app,
-      config: { Port }
-    } = this;
+    const { app , config: { Port } } = this;
     this.app.use("/health-check", (req, res) => {
       res.send(" I am Ok ");
     });
