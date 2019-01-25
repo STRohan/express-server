@@ -6,8 +6,8 @@ class TraineeController {
   get(req, res) {
     const { name, id } = req.body;
     const data = {
-      name: name,
-      id: id
+      name,
+      id
     };
 
     res.status(200).send(successHandler("success", "yahoo", 200));
@@ -20,9 +20,9 @@ class TraineeController {
 
     const { name, id } = req.body;
     const data = {
-      name: name,
-      id: id
-    };
+      name,
+      id
+        };
     if (!name) {
       console.log("name error");
       return next({
