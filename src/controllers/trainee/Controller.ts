@@ -10,13 +10,13 @@ class TraineeController {
       id
     };
 
-    res.status(200).send(successHandler("success", "yahoo", 200));
+    res.status(200).send(successHandler("success", "success", 200));
 
-    console.log("in controller");
+
   }
 
   post(req, res, next) {
-    console.log("name");
+
 
     const { name, id } = req.body;
     const data = {
@@ -24,7 +24,7 @@ class TraineeController {
       id
         };
     if (!name) {
-      console.log("name error");
+
       return next({
         error: "Bad Data Enter the name",
         message: "error",
