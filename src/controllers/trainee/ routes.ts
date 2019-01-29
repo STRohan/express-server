@@ -7,7 +7,7 @@ const TraineeRoute = express.Router();
 
 TraineeRoute.get("/", validationHandler(validation.get ),TraineeController.get);
 TraineeRoute.post("/",  validationHandler(validation.create ),TraineeController.post);
-TraineeRoute.put("/",  validationHandler(validation.update ),TraineeController.put);
-TraineeRoute.delete("/",  validationHandler(validation.delete ),TraineeController.delete);
+TraineeRoute.put("/?",  validationHandler(validation.update ),TraineeController.put);
+TraineeRoute.delete("/?:id",  validationHandler(validation.delete ),TraineeController.delete);
 
 export default TraineeRoute;

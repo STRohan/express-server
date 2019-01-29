@@ -4,27 +4,22 @@ import { stringify } from "querystring";
 
 class TraineeController {
   get(req, res) {
+    const { skip, limit } = req.query;
+    const data = {
+      skip,
+      limit
+    };
+
+    res.status(200).send(successHandler("success", data, 200));
+  }
+
+  post(req, res, next) {
     const { name, id } = req.body;
     const data = {
       name,
       id
     };
-
-    res.status(200).send(successHandler("success", "success", 200));
-
-
-  }
-
-  post(req, res, next) {
-
-
-    const { name, id } = req.body;
-    const data = {
-      name,
-      id
-        };
     if (!name) {
-
       return next({
         error: "Bad Data Enter the name",
         message: "error",
@@ -44,22 +39,18 @@ class TraineeController {
 
   put(req, res, next) {
     console.log("put1");
-    const { name, id } = req.body;
+    const { id, dataToUpdate } = req.body;
     const data = {
-      name: ["Changed"],
-      id: "0"
+      id: id || "0",
+      dataToUpdate: dataToUpdate || ["Changed"]
     };
 
     res.status(200).send(successHandler("updated", data, 200));
   }
 
   delete(req, res, next) {
-    const { name, id } = req.body;
-    const data = {
-      name: [],
-      id: ""
-    };
-    res.status(200).send(successHandler("deleted", data, 200));
+    // const {id } = req.param;
+    res.status(200).send(successHandler("success deleted", 200, null));
   }
 }
 export default new TraineeController();
