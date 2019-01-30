@@ -5,6 +5,8 @@ import { configuration } from "./config/configuration";
 import { IConfig } from "./config/IConfig";
 import { notFoundRoute, errorHandler, validationHandler } from "./libs/routes";
 import { router } from "./router";
+import Database from "./libs/Database";
+
 class Server {
   private app: express.Express;
   constructor(public config: IConfig) {
@@ -36,14 +38,19 @@ class Server {
   public run() {
     const {
       app,
-      config: { Port }
+      config: { Port, MONGO_URL }
     } = this;
-    this.app.listen(Port, (err: string) => {
-      if (err) {
-        throw err;
-      }
-    });
-    console.log("The app is running");
+    Database.open(MONGO_URL)
+      .then(result => {
+        console.log("Conected");
+        app.listen(Port, err => {
+          if (err) throw err;
+          console.log("app is running at", Port);
+        });
+      })
+      .catch(err => {
+        console.log("Error Occurred");
+      });
   }
 }
 export { Server };
