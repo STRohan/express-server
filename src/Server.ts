@@ -3,7 +3,7 @@ import { config } from "dotenv";
 import * as express from "express";
 import { configuration } from "./config/configuration";
 import { IConfig } from "./config/IConfig";
-import { notFoundRoute, errorHandler } from "./libs/routes";
+import { notFoundRoute, errorHandler, validationHandler } from "./libs/routes";
 import { router } from "./router";
 
 class Server {
@@ -28,10 +28,7 @@ class Server {
   }
 
   public setupRoutes() {
-    const {
-      app,
-      config: { Port }
-    } = this;
+    const { app , config: { Port } } = this;
     this.app.use("/health-check", (req, res) => {
       res.send(" I am Ok ");
     });

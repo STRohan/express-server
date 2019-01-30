@@ -1,11 +1,12 @@
+import { error } from 'util';
 let date = new Date();
 
 export function errorHandler(err, req, res, all) {
-  console.log("Error");
+
   res.json({
-    error: "Not Found",
-    message: "error",
-    status: 500,
+    error: err.error|| "error",
+    message: err.message || "wrong or invalid input",
+    status: err.status || 500,
     timestamp: date
   });
 }
