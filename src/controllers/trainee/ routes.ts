@@ -4,13 +4,14 @@ import {default as validation} from './validation'
 import {default as validationHandler} from "../../libs/routes/validationHandler"
 import{default as authMiddleWare}from"../../libs/routes/authMiddleWare"
 const TraineeRoute = express.Router();
+const{get:valGet,create,update,delete:valDelete}=validation;
+const{get,post,put,delete:del,auth}=TraineeController;
 
-
-TraineeRoute.get("/", validationHandler(validation.get ),TraineeController.get);
-TraineeRoute.post("/",  validationHandler(validation.create ),TraineeController.post);
-TraineeRoute.put("/?",  validationHandler(validation.update ),TraineeController.put);
-TraineeRoute.delete("/?:id",  validationHandler(validation.delete ),TraineeController.delete);
-TraineeRoute.get("/auth/", authMiddleWare('module','delete' ),TraineeController.auth);
+TraineeRoute.get("/", validationHandler(valGet ),get);
+TraineeRoute.post("/",  validationHandler(create ),post);
+TraineeRoute.put("/?",  validationHandler(update ),put);
+TraineeRoute.delete("/?:id",  validationHandler(valDelete ),del);
+TraineeRoute.get("/auth/", authMiddleWare('module',"read" ),auth);
 
 
 export default TraineeRoute;

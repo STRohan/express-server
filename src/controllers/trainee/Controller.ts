@@ -10,7 +10,6 @@ class TraineeController {
     res.status(200).send(successHandler("success", data, 200));
   }
   auth(req, res) {
-    console.log(req.user, "user");
     const { name, email, role } = req.user;
     res.status(200).send(successHandler("success", { name, email, role }, 200));
   }
@@ -36,7 +35,6 @@ class TraineeController {
     } else res.status(200).send(successHandler("Success", data, 200));
   }
   put(req, res, next) {
-    console.log("put1");
     const { id, dataToUpdate } = req.body;
     const data = {
       id: id || "0",

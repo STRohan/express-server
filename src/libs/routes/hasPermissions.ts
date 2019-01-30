@@ -5,10 +5,8 @@ export function hasPermission(
   role: string,
   permissionType: string
 ): boolean {
-  if (
+  return (
     permissions[moduleName]["all" as string].includes(role) ||
     permissions[moduleName][permissionType].includes(role)
-  )
-    return true;
-  else return false;
-}
+  );
+  }
