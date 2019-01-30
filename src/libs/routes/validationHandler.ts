@@ -15,10 +15,10 @@ const validationHandler = config => (req, res, next) => {
         if (skip) {
           if (isNaN(skip)) errorCommon("skip as number is required", next);
         }
-        if (typeof limit != "undefined") if (isNaN(limit)) errorCommon("limit as number is required", next);
-        if (values[0] == "" || typeof values[0] == "undefined") {
+        if (typeof limit != "undefined")
+          if (isNaN(limit)) errorCommon("limit as number is required", next);
+        if (values[0] == "" || typeof values[0] == "undefined")
           req.query[key] = items.default;
-        }
       }
     }
     if (items && items.string) {
@@ -26,10 +26,9 @@ const validationHandler = config => (req, res, next) => {
       if (typeof temp != "string")
         errorCommon(`${key} as string is required`, next);
     }
-    if (items && items.number) {
+    if (items && items.number)
       if (values[0] && isNaN(values[0]))
         errorCommon(`${key} as number is required`, next);
-    }
     if (items && items.isObject) {
       const temp = values[0];
       if (typeof temp != "object")
@@ -49,7 +48,7 @@ const validationHandler = config => (req, res, next) => {
     if (items && items.custom) return items.custom(values);
   });
   next();
-};
+}
 export default validationHandler;
 function errorCommon(message: any, next) {
   return next({
