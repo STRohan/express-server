@@ -3,7 +3,6 @@ const validation = {
     id: {
       required: true,
       string: true,
-
       in: ["body"],
       custom: function(values) {
         console.log("Value", values);
@@ -38,11 +37,9 @@ const validation = {
       default: 10,
       number: true,
       in: ["query"],
-      //isInt: true,
       errorMessage: "Limit is invalid"
     }
   },
-
   update: {
     id: {
       required: true,
