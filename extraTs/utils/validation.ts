@@ -1,14 +1,14 @@
-import { IUsers } from "./../interfaces";
+import { IUsers } from './../interfaces';
 
-import { validateEmail } from "./helpers";
+import { validateEmail } from './helpers';
 
 export function validUser(users1: IUsers[]) {
-  let validuser = [];
-  let invaliduser = [];
+  const validuser = [];
+  const invaliduser = [];
   let invalidcount = 0;
   let validcount = 0;
 
-  users1.forEach(function(user: IUsers) {
+  users1.forEach((user: IUsers) => {
     const { traineeEmail, reviewerEmail } = user;
     if (validateEmail(traineeEmail)) {
       validuser.push(traineeEmail);
@@ -26,8 +26,8 @@ export function validUser(users1: IUsers[]) {
       invalidcount++;
     }
   });
-  console.log("\nThe count of valid user is " + validcount);
-  console.log("\nThe names of valid users are :\n " + validuser);
-  console.log("\nThe count of invalid user is " + invalidcount);
-  console.log("\nThe names of invalid users are :\n " + invaliduser);
+  console.log('\nThe count of valid user is ' + validcount);
+  console.log('\nThe names of valid users are :\n ' + validuser);
+  console.log('\nThe count of invalid user is ' + invalidcount);
+  console.log('\nThe names of invalid users are :\n ' + invaliduser);
 }

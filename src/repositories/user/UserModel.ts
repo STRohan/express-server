@@ -1,12 +1,12 @@
-import * as mongoose from "mongoose";
-import { default as IUserModel } from "./IUserModel";
-import  UserSchema  from "./UserSchema";
+import * as mongoose from 'mongoose';
+import { default as IUserModel } from './IUserModel';
+import UserSchema from './UserSchema';
 
-const userSchema = new UserSchema({ collection: "user" });
+const userSchema = new UserSchema({ collection: 'user' });
 
 export const UserModel: mongoose.Model<IUserModel> = mongoose.model(
-  "user",
+  'user',
   userSchema,
-  "user",
-  true
+  'user',
+  true,
 );

@@ -1,7 +1,7 @@
-export function successHandler(message: string, data: any, status: number) {
+export function successHandler(message: string, nData: any, status: number) {
   return {
-    message: message || "success",
-    data: data || "data",
-    status: status || 200
+    data: nData || 'data',
+    message: message || 'success',
+    status: status || 200,
   };
 }

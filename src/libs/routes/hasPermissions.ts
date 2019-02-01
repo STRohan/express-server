@@ -1,13 +1,13 @@
-import { permissions } from "./constants";
+import { permissions } from './constants';
 
 export function hasPermission(
   moduleName: string,
   role: string,
-  permissionType: string
+  permissionType: string,
 ): boolean {
   return (
     permissions[moduleName] &&
-    (permissions[moduleName]["all" as string].includes(role) ||
+    (permissions[moduleName]['all' as string].includes(role) ||
       permissions[moduleName][permissionType].includes(role))
   );
 }
