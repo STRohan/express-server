@@ -3,9 +3,8 @@ import { config } from "dotenv";
 config();
 const configuration: IConfig = Object.freeze({
   Port: process.env.PORT,
-  NODE_ENV : process.env.NODE_ENV,
-  MONGO_URL : process.env.MONGO_URL
+  NODE_ENV: process.env.NODE_ENV,
+  MONGO_URL: process.env.MONGO_URL
 });
 
-console.log(configuration);
 export { configuration };
