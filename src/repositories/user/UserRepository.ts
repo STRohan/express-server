@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { isNumber } from 'util';
 import { default as IUserModel } from './IUserModel';
 import { UserModel } from './UserModel';
 export default class Repository {
@@ -14,14 +13,18 @@ export default class Repository {
     return this.model.count();
   }
   public create(data: any): Promise<IUserModel> {
-      return this.model.create({...data, _id: Repository.genrateObjectID()});
-    }
-
-    public  delete(data: any): Promise<IUserModel> {
-      return this.model.deleteOne(data);
-    }
-    public  update(data: any, change: any): Promise<IUserModel> {
-      return this.model.updateOne(data, change);
-    }
-
+    return this.model.create({ ...data, _id: Repository.genrateObjectID() });
   }
+  public delete(data: any): Promise<IUserModel> {
+    return this.model.deleteOne(data);
+  }
+  public update(data: any, change: any): Promise<IUserModel> {
+    return this.model.updateOne(data, change);
+  }
+  public findUser(data) {
+    return this.model.findOne(data, (err, result) => {
+      if (result) return result;
+      return err;
+    });
+  }
+}
