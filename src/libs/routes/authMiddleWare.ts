@@ -12,24 +12,24 @@ export default (module, permissionstype) => (req, res, next) => {
         status: 401,
       });
     }
-    const { name, email, role } = result;
+    const { name } = result;
     try {
-      userRepository.findUser({name}).then((respond) => {
+      userRepository.findUser({ name }).then((respond) => {
         if (respond) {
-          req.body = respond;
-          if (!hasPermission(module, result.role, permissionstype)) {
+          req.user = respond;
+          if (!hasPermission(module, respond.role, permissionstype)) {
             next({
               error: 'Unauthorized Access',
               message: 'Permission Not Granted',
               status: 401,
             });
           }
-          next();
+          return next();
         }
         next({ error: 'Unauthorized', message: 'Access Denied', status: 401 });
-        });
+      });
     } catch (err) {
-      next({ error: 'Error', message: err , status: 401 });
+      next({ error: 'Error', message: err, status: 401 });
     }
   });
 };
