@@ -14,7 +14,7 @@ class TraineeController {
     res.status(200).send(successHandler('success', { name, email, role }, 200));
   }
   public post(req, res, next) {
-    const { name, id } = req.body;
+    const { name, id } = req.user;
     const data = {
       id,
       name,
@@ -37,7 +37,7 @@ class TraineeController {
     }
   }
   public put(req, res, next) {
-    const { id, dataToUpdate } = req.body;
+    const { id, dataToUpdate } = req.user;
     const data = {
       dataToUpdate: dataToUpdate || ['Changed'],
       id: id || '0',

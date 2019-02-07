@@ -1,30 +1,21 @@
 import * as mongoose from 'mongoose';
+import { default as VersionableRepository } from '../versionable/VersionableRepository';
 import { default as IUserModel } from './IUserModel';
 import { UserModel } from './UserModel';
-export default class Repository {
-  public static genrateObjectID() {
+export default class Repository extends VersionableRepository <IUserModel, mongoose.Model<IUserModel>> {
+  public static generateObjectID() {
     return String(mongoose.Types.ObjectId());
   }
-  private model: mongoose.model<IUserModel>;
   constructor() {
-    this.model = UserModel;
-  }
-  public count(): Promise<number> {
-    return this.model.count();
+    super (UserModel);
   }
   public create(data: any): Promise<IUserModel> {
-    return this.model.create({ ...data, _id: Repository.genrateObjectID() });
+    return this.genericCreate(data);
   }
-  public delete(data: any): Promise<IUserModel> {
-    return this.model.deleteOne(data);
+  public update(data: any, change: any ): Promise<IUserModel> {
+  return this.genericUpdate(data, change);
   }
-  public update(data: any, change: any): Promise<IUserModel> {
-    return this.model.updateOne(data, change);
-  }
-  public findUser(data) {
-    return this.model.findOne(data, (err, result) => {
-      if (result) return result;
-      return err;
-    });
+    public delete(data): Promise<IUserModel> {
+    return this.genericDelete(data);
   }
 }
