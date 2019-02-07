@@ -1,10 +1,15 @@
 const validation = {
   create: {
+    email: {
+      in: ['body'],
+      regex: /^[\w-\.]+@(successive.tech)$/,
+      required: true,
+      string: true,
+    },
     id: {
       in: ['body'],
       required: true,
       string: true,
-
       custom(values) {
         console.log('Value', values);
         // throw { error: "Error Occurred", message: "Message" };
@@ -15,6 +20,11 @@ const validation = {
       in: ['body'],
       regex: /^[a-zA-Z]+$/,
       required: true,
+    },
+    password: {
+      in: ['body'],
+      required: true,
+
     },
   },
   dataToUpdate: {

@@ -8,12 +8,14 @@ export default function seed() {
     if (count <= 0) {
       repository
         .create({
+          email: 'trainee@successive.tech',
           id: '9',
           name: 'Trainee',
           role: 'trainee',
-        }),
+          }),
         repository
         .create({
+          email: 'head-trainee@successive.tech',
           id: '10',
           name: 'Head Trainer',
           role: 'head-trainer',
