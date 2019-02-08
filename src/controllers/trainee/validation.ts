@@ -18,8 +18,21 @@ const validation = {
     name: {
       errorMessage: 'Name is required',
       in: ['body'],
+      regex: /^[a-zA-Z\s]+$/,
+      required: true,
+    },
+    role: {
+      in: ['body'],
       regex: /^[a-zA-Z]+$/,
       required: true,
+    },
+  },
+  createLogIn: {
+    email: {
+      in: ['body'],
+      regex: /^[\w-\.]+@(successive.tech)$/,
+      required: true,
+      string: true,
     },
     password: {
       in: ['body'],
@@ -44,14 +57,14 @@ const validation = {
   },
   get: {
     limit: {
-      default: 10,
+      default: 4,
       errorMessage: 'Limit is invalid',
       in: ['query'],
       number: true,
       required: false,
     },
     skip: {
-      default: 70,
+      default: 1,
       errorMessage: 'Skip is invalid',
       in: ['query'],
       number: true,

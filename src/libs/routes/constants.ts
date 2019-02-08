@@ -1,5 +1,4 @@
 import { IPermissions } from './interfaces';
-
 export const module = 'module';
 export const headTrainer: string = 'head-trainer';
 export const trainee: string = 'trainee';

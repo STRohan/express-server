@@ -4,7 +4,7 @@ import { validation, validationHandler } from '../trainee';
 import { default as logInController } from './Controller';
 
 const userLogInRoute = express.Router();
-const {create} = validation;
-const {get} = logInController;
-userLogInRoute.post('/', validationHandler(create), get);
+const {createLogIn} = validation;
+const {post} = logInController;
+userLogInRoute.post('/', validationHandler(createLogIn), post);
 export default  userLogInRoute;
