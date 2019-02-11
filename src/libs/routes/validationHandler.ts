@@ -11,8 +11,8 @@ const validationHandler = (config) => (req, res, next) => {
       else if (items && !items.required) {
       const { skip, limit } = req.query;
       if (items && items.number) {
-        if (skip && (isNaN(skip))) errorCommon('skip as number is required', next);
-        if (limit && (isNaN(limit))) errorCommon('limit as number is required', next);
+        if (skip && (isNaN(skip))) errorCommon('Skip as number is required', next);
+        if (limit && (isNaN(limit))) errorCommon('Limit as number is required', next);
         if (values[0] === '' || values[0] === undefined) { req.query[key] = items.default; }
       }
     }
