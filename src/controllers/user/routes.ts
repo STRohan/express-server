@@ -6,9 +6,9 @@ import { default as UserController  } from './Controller';
 
 const UserRoute = express.Router();
 const { auth, put, delete: del , get } = UserController;
-const { get: valGet, create} = validation;
+const { get: valGet, create, dataToUpdate} = validation;
 UserRoute.get('/', authMiddleWare('module', 'read'), validationHandler(valGet), get);
 UserRoute.post('/auth/', authMiddleWare('module', 'read'), validationHandler(create), auth);
-UserRoute.put('/auth/', authMiddleWare('module', 'write'), validationHandler(create), put);
+UserRoute.put('/auth/', authMiddleWare('module', 'write'), validationHandler(dataToUpdate), put);
 UserRoute.delete('/auth/', authMiddleWare('module', 'write'), validationHandler(create), del );
 export default UserRoute;
