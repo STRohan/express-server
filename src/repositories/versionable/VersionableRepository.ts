@@ -39,11 +39,11 @@ export default class VersionableRepository< D extends mongoose.Document, M exten
     return newData;
   }
   public async genericUpdate(data: any, change: any): Promise<D> {
-    const { originalId } = change;
+    const { originalId, dataUp } = change;
     const data1 = await this.versModel.findOne({ originalId, deletedAt: { $exists: false }}, (err) => {
       if (err) throw err;
     });
-    const dataToInsert = Object.assign(data, data1, change);
+    const dataToInsert = Object.assign(data, data1, dataUp);
     await this.genericDocCreate(dataToInsert);
     await this.versModel.updateOne(
       { _id: data1._id, deletedAt: { $exists: false } }, { deletedAt: Date.now() });

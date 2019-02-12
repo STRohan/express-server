@@ -41,11 +41,20 @@ const validation = {
     },
   },
   dataToUpdate: {
+    dataUp: {
     in: ['body'],
     isObject: true,
     required: true,
-
-    custom(dataToUpdate) { console.log(dataToUpdate); },
+    },
+    originalId: {
+      in: ['body'],
+      required: true,
+      string: true,
+      custom(values) {
+        console.log('Value', values);
+        // throw { error: "Error Occurred", message: "Message" };
+      },
+    },
   },
   delete: {
     id: {

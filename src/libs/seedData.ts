@@ -6,8 +6,8 @@ export default async function seed() {
 // try {
   const count = await repository.count();
   {
-    if (count <= 10) {
-      for ( let i = 0; i < 10; i ++) {
+    if (count <= 1) {
+      for ( let i = 0; i < 1; i ++) {
       bcrypt.hash(mongoPassword, 10, (err, hash) => {
       repository
         .create({
